@@ -1,0 +1,16 @@
+<!-- ko if: tasksAmount-->
+<div class="todo-info">
+    <div class="info amount-of-tasks">
+        <span data-bind="text: $t('Amount of tasks: ')"></span>
+        <!-- ko text: tasks.length --><!-- /ko -->
+    </div>
+    <div class="info completed-tasks-amount">
+        <span data-bind="text: $t('Amount of completed tasks: ')"></span>
+        <!-- ko text: completedTasksAmount() --><!-- /ko -->
+    </div>
+    <div class="info uncompleted-tasks-amount">
+        <span data-bind="text: $t('Amount of uncompleted tasks: ')"></span>
+        <!-- ko text: uncompletedTasksAmount() --><!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->

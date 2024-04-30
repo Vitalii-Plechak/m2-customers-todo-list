@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">customer_todo_listing.customer_todo_listing_data_source</item>
+      <item name="deps" xsi:type="string">customer_todo_listing.customer_todo_listing_data_source</item>
+    </item>
+  </argument>
+  <settings>
+    <spinner>customer_todo_listing</spinner>
+    <deps>
+      <dep>customer_todo_listing.customer_todo_listing_data_source</dep>
+    </deps>
+  </settings>
+  <dataSource name="customer_todo_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <settings>
+      <storageConfig>
+        <param name="indexField" xsi:type="string">task_id</param>
+      </storageConfig>
+      <updateUrl path="mui/index/render"/>
+    </settings>
+    <aclResource>Magento_Customer::customer</aclResource>
+    <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="customer_todo_listing_data_source">
+      <settings>
+        <requestFieldName>task_id</requestFieldName>
+        <primaryFieldName>task_id</primaryFieldName>
+      </settings>
+    </dataProvider>
+  </dataSource>
+  <listingToolbar name="listing_top">
+    <settings>
+      <sticky>true</sticky>
+    </settings>
+    <bookmark name="bookmarks"/>
+    <columnsControls name="columns_controls"/>
+    <filterSearch name="fulltext"/>
+    <filters name="listing_filters" />
+    <paging name="listing_paging"/>
+  </listingToolbar>
+  <columns name="customer_todo_listing">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="resizeConfig" xsi:type="array">
+          <item name="enabled" xsi:type="boolean">true</item>
+        </item>
+      </item>
+    </argument>
+    <column name="task_id" sortOrder="10">
+      <settings>
+        <filter>textRange</filter>
+        <label translate="true">Task ID</label>
+        <sorting>desc</sorting>
+        <resizeEnabled>true</resizeEnabled>
+        <resizeDefaultWidth>60</resizeDefaultWidth>
+      </settings>
+    </column>
+    <column name="customer_id" sortOrder="20" class="VPT\Todo\Ui\Columns\TaskCustomerColumn">
+      <settings>
+        <label translate="true">Customer</label>
+        <resizeEnabled>true</resizeEnabled>
+        <resizeDefaultWidth>250</resizeDefaultWidth>
+      </settings>
+    </column>
+    <column name="status" component="VPT_Todo/js/grid/columns/status-select" sortOrder="30">
+      <settings>
+        <filter>text</filter>
+        <dataType>text</dataType>
+        <label translate="true">Status</label>
+        <resizeEnabled>true</resizeEnabled>
+        <resizeDefaultWidth>250</resizeDefaultWidth>
+      </settings>
+    </column>
+    <column name="label" sortOrder="40">
+      <settings>
+        <filter>text</filter>
+        <label translate="true">Label</label>
+        <resizeEnabled>true</resizeEnabled>
+      </settings>
+    </column>
+  </columns>
+</listing>

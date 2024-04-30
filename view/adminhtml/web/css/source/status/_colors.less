@@ -1,0 +1,40 @@
+/* Colors */
+@bg-enabled: #e5efe5;
+@color-enabled: #006400;
+
+@bg-disabled: #fae5e5;
+@color-disabled: #e02b27;
+
+@bg-default: transparent;
+@color-default: #303030;
+
+.page-layout-admin-1column {
+  .status-default,
+  .status-enabled,
+  .status-disabled {
+    display: block;
+    font-weight: bold;
+    padding: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+
+  .status-default {
+    background: @bg-default;
+    border: 1px solid @color-default;
+    color: @color-default;
+  }
+
+  .status-enabled {
+    background: @bg-enabled;
+    border: 1px solid @color-enabled;
+    color: @color-enabled;
+  }
+
+  .status-disabled {
+    background: @bg-disabled;
+    border: 1px solid @color-disabled;
+    color: @color-disabled;
+  }
+}

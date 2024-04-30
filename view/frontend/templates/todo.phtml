@@ -1,0 +1,12 @@
+<?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
+
+<div id="todo" data-bind="scope:'todo'" class="todo-container">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        }
+    }
+</script>

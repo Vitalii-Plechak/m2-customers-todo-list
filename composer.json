@@ -1,0 +1,30 @@
+{
+  "name": "vpt/module-todo",
+  "version": "1.0.0",
+  "description": "Customer todo list",
+  "type": "magento2-module",
+  "authors": [
+    {
+      "name": "Vitalii Plechak",
+      "email": "vitalii.plechak@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "magento/framework": "~102.0",
+    "magento/module-customer": "~102.0",
+    "magento/module-ui": "~101.1",
+    "magento/module-webapi": "~100.3"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "VPT\\Todo\\": ""
+    }
+  }
+}

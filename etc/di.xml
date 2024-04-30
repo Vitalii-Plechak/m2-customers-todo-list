@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <preference for="VPT\Todo\Api\TaskManagementInterface" type="VPT\Todo\Service\TaskManagement"/>
+  <preference for="VPT\Todo\Api\TaskRepositoryInterface" type="VPT\Todo\Service\TaskRepository"/>
+  <preference for="VPT\Todo\Api\Data\TaskInterface" type="VPT\Todo\Model\Task"/>
+
+  <preference for="VPT\Todo\Api\Data\TaskSearchResultInterface" type="VPT\Todo\Model\ResourceModel\Task\Collection"/>
+  <preference for="VPT\Todo\Api\CustomerTaskListInterface" type="VPT\Todo\Service\CustomerTaskList"/>
+  <preference for="VPT\Todo\Api\CustomerTaskStatusManagement" type="VPT\Todo\Service\TaskStatusManagement"/>
+
+  <type name="Magento\Framework\Console\CommandListInterface">
+    <arguments>
+      <argument name="commands" xsi:type="array">
+        <item name="vptTodoTaskList" xsi:type="object">VPT\Todo\Command\ListTasksCommand</item>
+        <item name="vptTodoTaskListCount" xsi:type="object">VPT\Todo\Command\TasksCountCommand</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+      <argument name="collections" xsi:type="array">
+        <item name="customer_todo_listing_data_source" xsi:type="string">TodoTaskSearchResult</item>
+      </argument>
+    </arguments>
+  </type>
+
+  <virtualType name="TodoTaskSearchResult" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <arguments>
+      <argument name="mainTable" xsi:type="string">customer_todo_task</argument>
+      <argument name="resourceModel" xsi:type="string">VPT\Todo\Model\ResourceModel\Task</argument>
+      <argument name="identifierName" xsi:type="string">task_id</argument>
+    </arguments>
+  </virtualType>
+</config>

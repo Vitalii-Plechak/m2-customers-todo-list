@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="customer_todo_task" resource="default" comment="List of customer todos">
+        <column xsi:type="int" name="task_id" identity="true" comment="Task ID" />
+        <column xsi:type="varchar" name="label" length="1024" nullable="false" comment="Task Label" />
+        <column xsi:type="varchar" name="status" length="255" default="open" comment="Task Status" />
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="true" comment="Customer ID" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="task_id" />
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ID_REFERENCE" table="customer_todo_task" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE" />
+        <index referenceId="CUSTOMER_TODO_TASK_LABEL_STATUS" indexType="fulltext">
+            <column name="label" />
+            <column name="status" />
+        </index>
+    </table>
+</schema>

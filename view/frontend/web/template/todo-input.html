@@ -1,0 +1,43 @@
+<div class="form-container">
+    <div class="main-actions">
+        <input type="text"
+            class="task-input"
+            name="task"
+            data-bind="
+                attr: {
+                    placeholder: $t('Write your task')
+                },
+                value: inputData,
+                event: { 'keyup': checkIsEnter }
+            "
+        >
+        <button class="action primary task-add"
+            data-bind="
+                click: addNewTask,
+                text: $t('Add Task')
+            "
+        ></button>
+    </div>
+    <!-- ko if: tasksAmount()-->
+    <div class="additional-actions">
+        <button class="action secondary delete_all"
+            data-bind="
+                click: deleteAll,
+                text: $t('Delete All')
+            "
+        ></button>
+        <button class="action secondary delete_completed"
+            data-bind="
+                click: deleteCompleted,
+                text: $t('Delete Completed')
+            "
+        ></button>
+        <button class="action secondary select-all"
+                data-bind="
+                click: completeAll,
+                text: $t('Complete all')
+            "
+        ></button>
+    </div>
+    <!-- /ko -->
+</div>

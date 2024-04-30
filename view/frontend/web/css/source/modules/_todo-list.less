@@ -1,0 +1,178 @@
+//
+//  Common (styles-m.css)
+//  _____________________________________________
+& when (@media-common = true) {
+  .todo-list {
+    padding: 1.8rem;
+  }
+
+  .list-title {
+    margin: 0;
+    padding-bottom: 1.8em;
+  }
+
+  ul.tasks {
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      .label {
+        margin: 2px 10px 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .actions-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    &.expand .status,
+    &.expand .delete {
+      opacity: 1;
+      visibility: visible;
+      left: calc(~'(0% - 15px)');
+    }
+
+    &.expand .status {
+      top: calc(~'(50% - 20px)');
+    }
+
+    &.expand .delete {
+      top: calc(~'(50% + 20px)');
+    }
+
+    .setting {
+      .lib-icon-font (
+              @icon-settings,
+        @_icon-font: @icon-font,
+        @_icon-font-size: 20px,
+        @_icon-font-line-height: @icon-font__line-height,
+        @_icon-font-color: #000
+      );
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:active,
+      &.alink:active {
+        color: inherit;
+      }
+
+      &.hidden {
+        opacity: .6;
+      }
+
+      &.complete {
+        border: 2px solid #82cc78;
+        background-color: #82cc782b;
+      }
+    }
+
+    .status,
+    .delete {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s;
+
+      &:active,
+      &.alink:active {
+        color: inherit;
+      }
+
+      &:before {
+        transition: all .1s;
+        margin-right: 1px;
+      }
+    }
+
+    .status {
+      .lib-icon-font (
+        @icon-edit,
+        @_icon-font: @icon-font,
+        @_icon-font-size: 17px,
+        @_icon-font-line-height: @icon-font__line-height,
+        @_icon-font-color: #000
+      );
+
+      &.open {
+        border: 2px solid #ccc;
+      }
+
+      &:hover,
+      &.complete {
+        border: 2px solid #82cc78;
+      }
+
+      &:hover {
+        .lib-icon-font (
+                @icon-checkmark,
+          @_icon-font: @icon-font,
+          @_icon-font-size: 17px,
+          @_icon-font-line-height: @icon-font__line-height,
+          @_icon-font-color: #fff
+        );
+        background: #82cc78;
+      }
+
+      &.complete {
+        .lib-icon-font (
+                @icon-checkmark,
+          @_icon-font: @icon-font,
+          @_icon-font-size: 20px,
+          @_icon-font-line-height: @icon-font__line-height,
+          @_icon-font-color: #fff
+        );
+        background: #82cc78;
+      }
+    }
+
+    .delete {
+      .lib-icon-font (
+              @icon-trash,
+        @_icon-font: @icon-font,
+        @_icon-font-size: 17px,
+        @_icon-font-line-height: @icon-font__line-height,
+        @_icon-font-color: #000
+      );
+      border: 2px solid #ccc;
+
+      &:hover {
+        background: red;
+        border: 2px solid red;
+
+        &:before {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .tasks.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
